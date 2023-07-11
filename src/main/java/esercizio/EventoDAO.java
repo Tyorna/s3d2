@@ -1,7 +1,5 @@
 package esercizio;
 
-import java.util.UUID;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -24,6 +22,11 @@ public class EventoDAO {
 	public Evento findById(long id) {
 		// SELECT * FROM students WHERE id=id;
 		Evento trova = em.find(Evento.class, id);
+		if (trova != null) {
+			return trova;
+		} else {
+			System.out.println("Evento non trovato");
+		}
 		return trova;
 	}
 
@@ -40,7 +43,7 @@ public class EventoDAO {
 		}
 	}
 
-	public void refresh(UUID id) {
+	public void refresh(long id) {
 		Evento trova = em.find(Evento.class, id);
 		em.refresh(trova);
 		System.out.println("REFRESh effetturato");

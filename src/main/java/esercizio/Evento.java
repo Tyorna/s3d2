@@ -1,8 +1,10 @@
 package esercizio;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -16,15 +18,16 @@ public class Evento {
 	private long id;
 
 	private String titolo;
-	private Date dataEvento;
+	private LocalDate dataEvento;
 	private String descrizione;
+	@Enumerated(EnumType.STRING)
 	private TipoEvento tipoEvento;
 	private int numeroMassimoPartecipanti;
 
 	public Evento() {
 	}
 
-	public Evento(String titolo, Date dataEvento, String descrizione, TipoEvento tipoEvento,
+	public Evento(String titolo, LocalDate dataEvento, String descrizione, TipoEvento tipoEvento,
 			int numeroMassimoPartecipanti) {
 		this.titolo = titolo;
 		this.dataEvento = dataEvento;
@@ -45,11 +48,11 @@ public class Evento {
 		this.titolo = titolo;
 	}
 
-	public Date getdataEvento() {
+	public LocalDate getdataEvento() {
 		return dataEvento;
 	}
 
-	public void setdataEvento(Date dataEvento) {
+	public void setdataEvento(LocalDate dataEvento) {
 		this.dataEvento = dataEvento;
 	}
 
@@ -79,8 +82,8 @@ public class Evento {
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ",\n titolo=" + titolo + ", \n data dell' evento=" + dataEvento
-				+ ", \n descrizione=" + descrizione + ", \n numero Massimo Partecipanti =" + numeroMassimoPartecipanti
-				+ ", \n tipo di evento=" + tipoEvento + "]";
+		return "Evento [ \n id = " + id + ",\n titolo = " + titolo + ", \n data dell' evento = " + dataEvento
+				+ ", \n descrizione = " + descrizione + ", \n numero Massimo Partecipanti = "
+				+ numeroMassimoPartecipanti + ", \n tipo di evento = " + tipoEvento + "]";
 	}
 }
